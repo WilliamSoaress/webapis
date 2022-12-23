@@ -1,0 +1,405 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "WebAPIs UniAlfa",
+        "description": "API usada em sala de aula",
+        "version": "1.0.0",
+        "license": {
+            "name": "Free!",
+            "url": ""
+        },
+        "contact": {
+            "name": "William Soares da Silva",
+            "email": "williamsoares058@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:{port}/v{version}",
+            "description": "Dev",
+            "variables": {
+                "port": {
+                    "default": "8088"
+                },
+                "version": {
+                    "default": "1"
+                }
+            }
+        }
+    ],
+    "tags": [
+        {
+            "name": "acesso"
+        }
+    ],
+    "paths": {
+        "/v1/acesso": {
+            "get": {
+                "tags": [
+                    "acesso"
+                ],
+                "operationId": "get-acesso",
+                "description": "Lista os registros ou um registro apenas em caso da presença do cabeçalho x-id",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista os registros ou um registro apenas em caso da presença do cabeçalho x-id"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "acesso"
+                ],
+                "operationId": "post-acesso",
+                "description": "Cadastra um acessos",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "description": "Token de acesso",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "token"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Responsavel por cadastrar um acesso"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "acesso"
+                ],
+                "operationId": "patch-acesso",
+                "description": "Edita um acesso",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "description": "Token de acesso",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "token"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Edita um acesso"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "acesso"
+                ],
+                "operationId": "delete-acesso",
+                "description": "Remove um acesso",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remove um acesso"
+                    }
+                }
+            }
+        },
+        "/v1/categorias": {
+            "get": {
+                "tags": [
+                    "categorias"
+                ],
+                "operationId": "get-categorias",
+                "description": "Lista as categorias ou uma categorias apenas em caso da presença do cabeçalho x-id",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista as categorias ou uma categorias apenas em caso da presença do cabeçalho x-id"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "categorias"
+                ],
+                "operationId": "post-categorias",
+                "description": "Cadastra uma categoria",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da categoria",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "nome"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cadastra uma categoria"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "categorias"
+                ],
+                "operationId": "patch-categorias",
+                "description": "Edita uma categoria",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da categoria",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "nome"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Edita uma categoria"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "categorias"
+                ],
+                "operationId": "delete-categorias",
+                "description": "Remove uma categoria",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remove uma categoria"
+                    }
+                }
+            }
+        },"/v1/produtos": {
+            "get": {
+                "tags": [
+                    "produtos"
+                ],
+                "operationId": "get-produtos",
+                "description": "Lista os produtos ou um produtos apenas em caso da presença do cabeçalho x-id",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista os produtos ou um produtos apenas em caso da presença do cabeçalho x-id"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "produtos"
+                ],
+                "operationId": "post-produtos",
+                "description": "Cadastra um produto",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "categoria_id": {
+                                        "description": "Id da categorias",
+                                        "type": "integer"
+                                    },
+                                    "nome": {
+                                        "description": "Nome do produto",
+                                        "type": "string"
+                                    },
+                                    "preco": {
+                                        "description": "Preco do produto",
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "categoria_id",
+                                    "nome",
+                                    "preco"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cadastra um produto"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "produtos"
+                ],
+                "operationId": "patch-produtos",
+                "description": "Edita um produto",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "categoria_id": {
+                                        "description": "Id da categorias",
+                                        "type": "integer"
+                                    },
+                                    "nome": {
+                                        "description": "Nome do produto",
+                                        "type": "string"
+                                    },
+                                    "preco": {
+                                        "description": "Preco do produto",
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "categoria_id",
+                                    "nome",
+                                    "preco"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Edita um produto"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "produtos"
+                ],
+                "operationId": "delete-produtos",
+                "description": "Remove um produto",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "x-id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remove um produto"
+                    }
+                }
+            }
+        }
+    },
+    "components": {}
+}
